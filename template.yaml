@@ -12,7 +12,12 @@ Globals:
       - x86_64
     Environment:
       Variables:
-        MONGO_URI: mongodb+srv://k4p:Rulman26@k4p-z7qkz.mongodb.net/agenciaDev?retryWrites=true&w=majority
+        MYSQL_HOST: xxxxxxxxx
+        MYSQL_DATABASE: indra
+        MYSQL_USER: admin
+        MYSQL_PASSWORD: xxxxxxxxx
+        MYSQL_CONNECTION_LIMIT: 10
+        MYSQL_QUEUE_LIMIT: 10
   Api:
     Cors:
       AllowMethods: "'POST, GET, OPTIONS'"
@@ -24,17 +29,41 @@ Parameters:
     Type: String
     Default: dev
 Resources:
-  getPeopleById:
+  obtenerPersonaPorId:
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: ./functions
-      Handler: app.getPeopleById
+      Handler: app.obtenerPersonaPorId
       Events:
-        getPeopleById:
+        obtenerPersonaPorId:
           Type: Api 
           Properties:
             RestApiId: !Ref IndraApi
-            Path: /people-by-id
+            Path: /obtener-persona-por-id
+            Method: get
+  guardarPersona:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: ./functions
+      Handler: app.guardarPersona
+      Events:
+        guardarPersona:
+          Type: Api 
+          Properties:
+            RestApiId: !Ref IndraApi
+            Path: /guardar-persona
+            Method: post
+  paginarPersonas:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: ./functions
+      Handler: app.paginarPersonas
+      Events:
+        paginarPersonas:
+          Type: Api 
+          Properties:
+            RestApiId: !Ref IndraApi
+            Path: /paginar-personas
             Method: get
   IndraApi:
       Type: AWS::Serverless::Api
