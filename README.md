@@ -6,4 +6,4 @@ sam deploy --template-file template.yaml --stack-name indra-backend --capabiliti
 ingresar a la carpeta functions. <br>
 luego ejecuar npm run test
 # probar swagger
-ingresar a https://editor.swagger.io/ copiar el codigo de swagger.yaml y probar
+ingresar a https://editor.swagger.io/ copiar el codigo de swagger.yaml y realizar las consultas
