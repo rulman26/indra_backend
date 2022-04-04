@@ -12,10 +12,10 @@ Globals:
       - x86_64
     Environment:
       Variables:
-        MYSQL_HOST: xxxxxxxxx
+        MYSQL_HOST: xxxxx
         MYSQL_DATABASE: indra
         MYSQL_USER: admin
-        MYSQL_PASSWORD: xxxxxxxxx
+        MYSQL_PASSWORD: xxxx
         MYSQL_CONNECTION_LIMIT: 10
         MYSQL_QUEUE_LIMIT: 10
   Api:

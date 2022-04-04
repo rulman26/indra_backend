@@ -13,7 +13,7 @@ exports.obtenerPersonaPorId = async (event, context) => {
         if(!people){
             return {
                 ...response,
-                'statusCode': 500,
+                'statusCode': 204,
                 'body': JSON.stringify(err)
             }
         }
