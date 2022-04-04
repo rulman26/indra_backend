@@ -1,19 +1,20 @@
 var request = require('supertest')
+const api_gateway = 'https://nb5ghd88r3.execute-api.us-east-1.amazonaws.com/dev/'
 describe('obtener datos persona', () => {
     test('obtener datos swapi', async () => {
-        const response = await request('https://nb5ghd88r3.execute-api.us-east-1.amazonaws.com/dev/').get('obtener-persona-por-id?id=1').send();
+        const response = await request(api_gateway).get('obtener-persona-por-id?id=1').send();
         expect(response.status).toBe(200)
     })
 
     test('paginar personas', async () => {
-        const response = await request('https://nb5ghd88r3.execute-api.us-east-1.amazonaws.com/dev/').get('paginar-personas?pagina=0&limite=10').send();
+        const response = await request(api_gateway).get('paginar-personas?pagina=0&limite=10').send();
         expect(response.status).toBe(200)
     })
     
     test('guardar persona', async () => {
-        const response = await request('https://nb5ghd88r3.execute-api.us-east-1.amazonaws.com/dev/').post('guardar-persona')
+        const response = await request(api_gateway).post('guardar-persona')
         .send({
-            "nombre":"Maria 2322",
+            "nombre":"Maria test",
             "altura":"170",
             "masa":"73",
             "colorPelo":"marron",
